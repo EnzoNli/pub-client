@@ -11,10 +11,10 @@ const Hero = () => {
   const [showForm, setShowForm] = useState(false);
 
   const handleButtonClick = () => {
-    animate(".base__hero", { opacity: 0 });
-    setTimeout(() => {
+    const animation = animate(".base__hero", { opacity: 0 });
+    animation.then(() => {
       setShowForm(true);
-    }, 1000);
+    });
   };
 
   const handleCloseForm = () => {

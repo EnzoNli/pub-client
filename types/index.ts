@@ -12,6 +12,7 @@ export interface FormButtonProps {
   content: string;
   delay: number;
   icon: IconDefinition;
+  handleClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
 export interface FormProps {

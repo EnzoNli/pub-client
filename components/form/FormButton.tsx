@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-const FormButton = ({ content, delay, icon }: FormButtonProps) => {
+const FormButton = ({ content, delay, icon, handleClick }: FormButtonProps) => {
   return (
     <motion.button
       initial="hidden"
@@ -23,6 +23,7 @@ const FormButton = ({ content, delay, icon }: FormButtonProps) => {
           },
         },
       }}
+      onClick={handleClick}
       className="group select__button"
     >
       <h5 className="text__button">{content}</h5>
