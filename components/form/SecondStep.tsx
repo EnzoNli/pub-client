@@ -42,11 +42,10 @@ const SecondStepForm = () => {
       >
         Sur quel jeu ?
       </motion.h1>
-    </div>
-  ) : (
-    <div>
       <GameCombobox />
     </div>
+  ) : (
+    <div></div>
   );
 };
 

@@ -110,4 +110,8 @@
   @apply h-16 text-gray-500 group-hover:text-primary-blue transition-colors duration-100;
 }
 
+.form__combobox {
+  @apply flex justify-center 2xl:text-[72px] sm:text-[64px] text-[50px] font-extrabold pb-16;
+}
+
 /* END: Buttons styles */
