@@ -1,23 +1,42 @@
 "use client";
 
+import React, { useState } from "react";
 import Image from "next/image";
 import CustomButton from "./CustomButton";
 import Link from "next/link";
+import Form from "./form/Form";
+import { animate, motion } from "framer-motion";
 
 const Hero = () => {
-  return (
-    <div className="hero">
+  const [showForm, setShowForm] = useState(false);
+
+  const handleButtonClick = () => {
+    const animation = animate(".base__hero", { opacity: 0 });
+    animation.then(() => {
+      setShowForm(true);
+    });
+  };
+
+  const handleCloseForm = () => {
+    setShowForm(false);
+  };
+
+  return !showForm ? (
+    <motion.div
+      className="hero base__hero"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+    >
       <div className="flex-1 pt-36 padding-x">
         <h1 className="hero__title">Vous vous ennuyez ?</h1>
-
         <p className="hero__subtitle">
           Cherchez un jeu, un serveur. Trouvez facilement et rapidement quelque
-          chose a faire en répondant à quelques questions !
+          chose à faire en répondant à quelques questions !
         </p>
-
         <CustomButton
           title="Lancez-vous !"
           containerStyles="bg-primary-blue text-white rounded-full mt-10"
+          handleClick={handleButtonClick}
         />
       </div>
       <div className="hero__image-container">
@@ -26,6 +45,10 @@ const Hero = () => {
         </div>
         <div className="hero__image-overlay" />
       </div>
+    </motion.div>
+  ) : (
+    <div className="hero">
+      <Form onClose={handleCloseForm} />
     </div>
   );
 };
