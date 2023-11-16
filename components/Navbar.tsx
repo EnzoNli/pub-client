@@ -4,19 +4,32 @@ import Link from "next/link";
 import Image from "next/image";
 
 import CustomButton from "./CustomButton";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
   const [bgChange, setBgchange] = useState(false);
-  const changeNavbarBg = () => {
-    if (window.scrollY >= 80) {
-      setBgchange(true);
-    } else {
-      setBgchange(false);
-    }
-  };
-  window.addEventListener("scroll", changeNavbarBg);
+  useEffect(() => {
+    const changeNavbarBg = () => {
+      if (typeof window !== 'undefined') {
+        if (window.scrollY >= 80) {
+          setBgchange(true);
+        } else {
+          setBgchange(false);
+        }
+      }
+    };
 
+    // Add event listener only if window is defined
+    if (typeof window !== 'undefined') {
+      window.addEventListener("scroll", changeNavbarBg);
+
+      // Clean up the event listener when the component is unmounted
+      return () => {
+        window.removeEventListener("scroll", changeNavbarBg);
+      };
+    }
+  }, []); // Ensure this effect runs only on initial mount
+  
   return (
     <header className="w-full z-10 fixed">
       <div
