@@ -6,6 +6,7 @@ export const footerLinks = [
       { title: "Instagram", url: "/" },
       { title: "Twitter", url: "/" },
       { title: "Facebook", url: "/" },
+      { title: "Test", url: "/" },
     ],
   },
 ];
